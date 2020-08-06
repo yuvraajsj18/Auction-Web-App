@@ -1,0 +1,39 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow-y: scroll;
+    background-color: azure;
+}
+
+#main-nav  a {
+    color: #0062cc;
+}
+#main-nav a:hover {
+    color: #033265;
+}
+
+#register-form, #login-form, #create-new-listing {
+    max-width: 600px;
+}
+
+#listing-display .card:hover {
+    box-shadow: 2px 4px #e0e1e2 ;
+}
+
+#listing-info li {
+    border-left: 6px solid #5d9cdf;
+}
+
+#listing-info li:hover {
+    border-left: 6px solid #0062cc;
+}
+
+#watchlist li:hover, #category_listings li:hover, #categories li:hover {
+    background-color: aliceblue;
+}
+
+@media(max-width: 992px) {
+    #actions {
+        margin-top: 20px;
+    }
+}

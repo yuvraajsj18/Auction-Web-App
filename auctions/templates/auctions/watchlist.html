@@ -1,0 +1,20 @@
+{% extends 'auctions/layout.html' %}
+
+{% block title %}
+    Watchlist
+{% endblock %}
+
+{% block main %}
+    <h2 class="pt-3 pb-3 text-center display-4">Watchlist</h2>
+    <ul class="list-group text-center" id="watchlist">
+        {% for listing in watchlist %}
+            <a href="{% url 'auctions:listing' listing.id %}" class="text-decoration-none">
+                <li class="list-group-item p-4 lead">
+                    {{listing.title}} at ${{listing.current_price}}
+                </li>
+            </a>
+        {% empty %}
+            <div class="alert alert-secondary">No Item in Watchlist</div>
+        {% endfor %}
+    </ul>
+{% endblock %}

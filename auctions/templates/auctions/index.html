@@ -1,0 +1,31 @@
+{% extends "auctions/layout.html" %}
+{% load humanize %}
+
+{% block main %}
+    <h2 class="pt-3 pb-3 text-center display-4">Active Listings</h2>
+
+    {% if listings %}
+        <div class="card-columns" id="listing-display">
+            {% for listing in listings %}
+
+            <div class="card">
+                {% if listing.image_url %}
+                    <img class="card-img-top" src="{{listing.image_url}}" alt="{{listing.title}} product">
+                {% else %}
+                    <div class="card-header text-center">No Image Available</div>
+                {% endif %}
+                <div class="card-body">
+                    <h4 class="card-title">
+                        {{listing.title}}
+                        <span class="badge badge-secondary badge-pill">at ${{listing.current_price | intcomma}}</span>
+                    </h4>
+                    <p class="card-text">{{listing.description}}</p>
+                    <a href="{% url 'auctions:listing' listing.pk %}" class="btn btn-sm btn-outline-dark stretched-link">See More</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="alert alert-warning text-center">No Listing Available</div>
+    {% endif %}
+{% endblock %}

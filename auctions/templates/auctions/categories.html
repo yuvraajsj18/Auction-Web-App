@@ -1,0 +1,21 @@
+{% extends 'auctions/layout.html' %}
+
+{% block title %}
+    Categories
+{% endblock %}
+
+{% block main %}
+    <h2 class="pt-3 pb-3 text-center display-4">Categories</h2>
+
+    <ul class="list-group text-center" id="categories">
+        {% for category in categories %}
+            <a href="{% url 'auctions:category' category.name %}" class="text-decoration-none">
+                <li class="list-group-item p-4 lead">
+                    {{category.name}}
+                </li>
+            </a>
+        {% empty %}
+            <div class="alert alert-secondary">No Category Exists Yet</div>
+        {% endfor %}
+    </ul>
+{% endblock %}

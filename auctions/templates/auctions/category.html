@@ -1,0 +1,21 @@
+{% extends 'auctions/layout.html' %}
+
+{% block title %}
+    category.name
+{% endblock %}
+
+{% block main %}
+<h2 class="pt-3 pb-3 text-center display-4">All {{category.name}}</h2>
+
+<ul class="list-group text-center" id="category_listings">
+    {% for listing in category_listings %}
+        <a href="{% url 'auctions:listing' listing.id %}" class="text-decoration-none">
+            <li class="list-group-item p-4 lead">
+                {{listing.title}} at ${{listing.current_price}}
+            </li>
+        </a>
+    {% empty %}
+        <div class="alert alert-secondary">No Item in Category</div>
+    {% endfor %}
+</ul>
+{% endblock %}
